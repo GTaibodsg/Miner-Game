@@ -18,6 +18,7 @@ struct Player
 	int health;//生命 
 	int mul;//倍率 
 	int ign;//闪避率
+	int Round;//坚持的回合
 	bool operator < (const Player tmp) const
 	{
 		return score>tmp.score;
@@ -222,7 +223,7 @@ void print_grid()
 	}
 }
 
-void print_player_info()
+void print_player_info(bool show_Round)
 {
 	for(int i=1;i<=n;i++)
 	{
@@ -230,7 +231,13 @@ void print_player_info()
 		cout<<"得分："<<player[i].score<<" | ";
 		cout<<"生命值："<<player[i].health<<" | ";
 		cout<<"倍率："<<player[i].mul/10<<"."<<player[i].mul%10<<" | ";
-		cout<<"闪避率："<<player[i].ign<<" %"<<endl;
+		if(show_Round)
+		{
+			cout<<"闪避率："<<player[i].ign<<" %"<<" | ";
+			cout<<"坚持的回合数："<<player[i].Round<<endl;
+		}
+		else
+			cout<<"闪避率："<<player[i].ign<<" %"<<endl;
 	}
 }
 
@@ -297,7 +304,7 @@ void EndMessage()
 	wait;
 	print_grid();
 	sort(player+1,player+n+1);
-	print_player_info();
+	print_player_info(true);
 }
 
 int main()
@@ -313,8 +320,9 @@ int main()
 	{
 		clear;
 		print_grid();
-		print_player_info();
+		print_player_info(false);
 		cout<<"当前玩家："<<player[cur].name<<endl; 
+		player[cur].Round++;
 		wait;
 		int x=rand()%16+1;
 		int y=rand()%16+1;
