@@ -250,7 +250,7 @@ void TNT_act(int x,int y)
 	{
 		if(game[x+i][y+j]>=4)
 			game[x+i][y+j]=1;
-		else if(game[i][j]==2)
+		else if(game[x+i][y+j]==2)
 		{
 			cout<<"炸弹触发连锁反应！"<<endl;
 			wait;
