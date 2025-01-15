@@ -108,7 +108,7 @@ void initial()
 	{
 		int x=rand()%12+3;
 		int y=rand()%12+3;
-		if(game[x][y]==0&&game[x-1][y]==0&&game[x+1][y]==0&&game[x][y-1]==0&&game[x][y+1]==0)
+		if(game[x][y]==0&&game[x-1][y]!=3&&game[x+1][y]!=3&&game[x][y-1]!=3&&game[x][y+1]!=3)
 		{
 			game[x][y]=2;//∑≈÷√TNT 
 			tmp++;
@@ -119,7 +119,7 @@ void initial()
 	{
 		int x=rand()%16+1;
 		int y=rand()%16+1;
-		if(game[x][y]==0&&game[x-1][y]==0&&game[x+1][y]==0&&game[x][y-1]==0&&game[x][y+1]==0)
+		if(game[x][y]==0&&game[x-1][y]!=3&&game[x+1][y]!=3&&game[x][y-1]!=3&&game[x][y+1]!=3)
 		{
 			game[x][y]=4;//∑≈÷√ƒæÕ∑ 
 			tmp++;
