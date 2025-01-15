@@ -193,7 +193,7 @@ void initial()
 		}
 	}
 	tmp=0;
-	while(tmp<2)
+	while(tmp<3)
 	{
 		int x=rand()%12+1;
 		int y=rand()%12+1;
@@ -204,7 +204,7 @@ void initial()
 		}
 	}
 	tmp=0;
-	while(tmp<2)
+	while(tmp<3)
 	{
 		int x=rand()%12+1;
 		int y=rand()%12+1;
@@ -214,7 +214,7 @@ void initial()
 			tmp++;
 		}
 	}tmp=0;
-	while(tmp<2)
+	while(tmp<3)
 	{
 		int x=rand()%12+1;
 		int y=rand()%12+1;
@@ -243,7 +243,7 @@ void initial()
 		}
 	}
 	tmp=0;
-	while(tmp<10)
+	while(tmp<6)
 	{
 		int x=rand()%8+3;
 		int y=rand()%8+3;
@@ -310,7 +310,7 @@ void initial()
 		}
 	}
 	tmp=0;
-	while(tmp<4)
+	while(tmp<5)
 	{
 		int x=rand()%12+1;
 		int y=rand()%12+1;
@@ -321,7 +321,7 @@ void initial()
 		}
 	}
 	tmp=0;
-	while(tmp<4)
+	while(tmp<5)
 	{
 		int x=rand()%12+1;
 		int y=rand()%12+1;
@@ -331,7 +331,7 @@ void initial()
 			tmp++;
 		}
 	}tmp=0;
-	while(tmp<4)
+	while(tmp<5)
 	{
 		int x=rand()%12+1;
 		int y=rand()%12+1;
@@ -363,7 +363,6 @@ void print_grid()
 		if(i%4==0)
 			cout<<endl;
 	}
-	cout<<endl;
 	cout<<"µØÓü£º"<<endl;
 	cout<<endl;
 	for(int i=1;i<=12;i++)
