@@ -357,8 +357,8 @@ int main()
 		{
 			cout<<"ÄãÍÚµôÁËÀ¶±¦Ê¯£¡"<<endl;
 			wait;
-			int tmp=rand()%16+1;
-			player[cur].ign+=tmp;
+			int tmp=rand()%20+1;
+			player[cur].ign=min(90,player[cur].ign+tmp);
 			cout<<"¹§Ï²Äã£¬»ñµÃÁË "<<tmp<<"% µãÉÁ±ÜÂÊ£¡"<<endl;
 			game[x][y]=1;
 		}

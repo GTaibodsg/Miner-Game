@@ -393,7 +393,7 @@ int main()
 		{
 			cout<<"你挖掉了红宝石！"<<endl;
 			wait;
-			int tmp=rand()%3+1;
+			int tmp=rand()%5+1;
 			player[cur].health+=tmp;
 			cout<<"恭喜你，获得了 "<<tmp<<" 点生命值！"<<endl;
 			game[x][y]=1;
@@ -411,8 +411,8 @@ int main()
 		{
 			cout<<"你挖掉了蓝宝石！"<<endl;
 			wait;
-			int tmp=rand()%12+1;
-			player[cur].ign+=tmp;
+			int tmp=rand()%20+1;
+			player[cur].ign=min(90,player[cur].ign+tmp);
 			cout<<"恭喜你，获得了 "<<tmp<<"% 点闪避率！"<<endl;
 			game[x][y]=1;
 		}
