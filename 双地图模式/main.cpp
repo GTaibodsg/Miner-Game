@@ -63,7 +63,10 @@ void print(int x)
 	else if(x==12)
 		cout<<"蓝";
 	else
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),13);
 		cout<<"传";
+	}
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7);
 }
 
@@ -74,7 +77,7 @@ bool danger(int x)//危险方块
 
 void get_player_info()
 {
-	cout<<"双地图模式：两个地图之间通过传送门（传）进行切换。传送门不会被玩家破坏，但会被岩浆和炸弹破坏。"<<endl;
+	cout<<"双地图模式：两个地图之间通过传送门（传）进行切换。传送门不会被破坏，但是进入传送门的代价是 1 点生命值。"<<endl;
 	cout<<"请输入游戏人数：";
 	cin>>n;
 	while(!(n>=2&&n<=16))
@@ -103,8 +106,8 @@ void initial()
 	int tmp=0;
 	while(tmp<1)
 	{
-		int x=rand()%12+1;
-		int y=rand()%12+1;
+		int x=rand()%8+3;
+		int y=rand()%8+3;
 		if(game[0][x][y]==0)
 		{
 			game[0][x][y]=3;//放置岩浆 
@@ -112,7 +115,7 @@ void initial()
 		}
 	}
 	tmp=0;
-	while(tmp<8)
+	while(tmp<6)
 	{
 		int x=rand()%8+3;
 		int y=rand()%8+3;
@@ -240,7 +243,7 @@ void initial()
 		}
 	}
 	tmp=0;
-	while(tmp<16)
+	while(tmp<10)
 	{
 		int x=rand()%8+3;
 		int y=rand()%8+3;
@@ -307,7 +310,7 @@ void initial()
 		}
 	}
 	tmp=0;
-	while(tmp<3)
+	while(tmp<4)
 	{
 		int x=rand()%12+1;
 		int y=rand()%12+1;
@@ -318,7 +321,7 @@ void initial()
 		}
 	}
 	tmp=0;
-	while(tmp<3)
+	while(tmp<4)
 	{
 		int x=rand()%12+1;
 		int y=rand()%12+1;
@@ -328,7 +331,7 @@ void initial()
 			tmp++;
 		}
 	}tmp=0;
-	while(tmp<3)
+	while(tmp<4)
 	{
 		int x=rand()%12+1;
 		int y=rand()%12+1;
@@ -400,7 +403,7 @@ void TNT_act(int x,int y,int loc)
 	for(int j=-2;j<=2;j++)
 	if(abs(i)+abs(j)<=2)
 	{
-		if(game[loc][x+i][y+j]>=4)
+		if(game[loc][x+i][y+j]>=4&&game[loc][x+i][y+j]<=12)
 			game[loc][x+i][y+j]=1;
 		else if(game[loc][x+i][y+j]==2)
 		{
@@ -433,7 +436,7 @@ bool checklava(int loc)
 			int yy=y+dy[i];
 			if(xx<1||xx>12||yy<1||yy>12||s.count({xx,yy}))
 				continue;
-			if(game[loc][xx][yy]==1||game[loc][xx][yy]==4||game[loc][xx][yy]==13)
+			if(game[loc][xx][yy]==1||game[loc][xx][yy]==4)
 			{
 				game[loc][xx][yy]=3;
 				q.push({xx,yy});
@@ -572,9 +575,10 @@ int main()
 		else
 		{
 			if(loc==0)
-				cout<<"你传送到了地狱"<<endl;
+				cout<<"你传送到了地狱。"<<endl;
 			else
-				cout<<"你传送到了主世界"<<endl;
+				cout<<"你传送到了主世界。"<<endl;
+			player[cur].health=max(0,player[cur].health-1);
 			player[cur].locate=1-player[cur].locate;
 		}
 		wait;
