@@ -137,67 +137,13 @@ void initial()
 		}
 	}
 	tmp=0;
-	while(tmp<16)
-	{
-		int x=rand()%16+1;
-		int y=rand()%16+1;
-		if(game[x][y]==0)
-		{
-			game[x][y]=7;//放置铁矿 
-			tmp++;
-		}
-	}
-	tmp=0;
-	while(tmp<8)
-	{
-		int x=rand()%16+1;
-		int y=rand()%16+1;
-		if(game[x][y]==0)
-		{
-			game[x][y]=8;//放置金矿 
-			tmp++;
-		}
-	}
-	tmp=0;
-	while(tmp<3)
-	{
-		int x=rand()%16+1;
-		int y=rand()%16+1;
-		if(game[x][y]==0)
-		{
-			game[x][y]=9;//放置钻石 
-			tmp++;
-		}
-	}
-	tmp=0;
-	while(tmp<5)
-	{
-		int x=rand()%16+1;
-		int y=rand()%16+1;
-		if(game[x][y]==0)
-		{
-			game[x][y]=10;//放置红宝石 
-			tmp++;
-		}
-	}
-	tmp=0;
-	while(tmp<5)
+	while(tmp<128)
 	{
 		int x=rand()%16+1;
 		int y=rand()%16+1;
 		if(game[x][y]==0)
 		{
 			game[x][y]=11;//放置绿宝石 
-			tmp++;
-		}
-	}tmp=0;
-	while(tmp<5)
-	{
-		int x=rand()%16+1;
-		int y=rand()%16+1;
-		if(game[x][y]==0)
-		{
-			game[x][y]=12;//放置蓝宝石 
 			tmp++;
 		}
 	}
