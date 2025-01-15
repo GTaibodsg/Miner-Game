@@ -73,9 +73,9 @@ void get_player_info()
 {
 	cout<<"请输入游戏人数：";
 	cin>>n;
-	while(!(n>=2))
+	while(!(n>=2&&n<=16))
 	{
-		cout<<"游戏人数必须是 2 以上的整数，请重新输入：";
+		cout<<"游戏人数必须是 2 到 16 之间的整数，请重新输入：";
 		cin>>n;
 	}
 	for(int i=1;i<=n;i++)

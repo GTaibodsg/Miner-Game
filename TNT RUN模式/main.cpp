@@ -92,72 +92,34 @@ void get_player_info()
 
 void initial()
 {
-	int tmp=0;
-	while(tmp<2)
-	{
-		int x=rand()%16+1;
-		int y=rand()%16+1;
-		if(game[x][y]==0)
-		{
-			game[x][y]=3;//放置岩浆 
-			tmp++;
-		}
-	}
-	tmp=0;
-	while(tmp<3)
-	{
-		int x=rand()%12+3;
-		int y=rand()%12+3;
-		if(game[x][y]==0&&game[x-1][y]!=3&&game[x+1][y]!=3&&game[x][y-1]!=3&&game[x][y+1]!=3)
-		{
-			game[x][y]=2;//放置TNT 
-			tmp++;
-		}
-	}
-	tmp=0;
-	while(tmp<64)
-	{
-		int x=rand()%16+1;
-		int y=rand()%16+1;
-		if(game[x][y]==0&&game[x-1][y]!=3&&game[x+1][y]!=3&&game[x][y-1]!=3&&game[x][y+1]!=3)
-		{
-			game[x][y]=4;//放置木头 
-			tmp++;
-		}
-	}
-	tmp=0;
-	while(tmp<32)
-	{
-		int x=rand()%16+1;
-		int y=rand()%16+1;
-		if(game[x][y]==0)
-		{
-			game[x][y]=6;//放置煤矿 
-			tmp++;
-		}
-	}
-	tmp=0;
-	while(tmp<128)
-	{
-		int x=rand()%16+1;
-		int y=rand()%16+1;
-		if(game[x][y]==0)
-		{
-			game[x][y]=11;//放置绿宝石 
-			tmp++;
-		}
-	}
-	for(int i=1;i<=16;i++)
-	for(int j=1;j<=16;j++)
-	if(game[i][j]==0)
-		game[i][j]=5;//放置石头 
+	for(int i=1;i<=4;i++)
+	for(int j=1;j<=4;j++)
+		game[i][j]=5;
+}
+
+int nex(int x)
+{
+	if(x==5)
+		return 4;
+	else if(x==4)
+		return 6;
+	else if(x==6)
+		return 7;
+	else if(x==7)
+		return 8;
+	else if(x==8)
+		return 9;
+	else if(x==9)
+		return rand()%3+10;
+	else
+		return 3;
 }
 
 void print_grid()
 {
-	for(int i=1;i<=16;i++)
+	for(int i=1;i<=4;i++)
 	{
-		for(int j=1;j<=16;j++)
+		for(int j=1;j<=4;j++)
 		{
 			print(game[i][j]);
 			if(j%4==0)
@@ -209,8 +171,8 @@ bool checklava()
 {
 	queue<PA> q;
 	set<PA> s;
-	for(int i=1;i<=16;i++)
-	for(int j=1;j<=16;j++)
+	for(int i=1;i<=4;i++)
+	for(int j=1;j<=4;j++)
 	if(game[i][j]==3)
 		q.push({i,j});
 
@@ -225,7 +187,7 @@ bool checklava()
 		{
 			int xx=x+dx[i];
 			int yy=y+dy[i];
-			if(xx<1||xx>16||yy<1||yy>16||s.count({xx,yy}))
+			if(xx<1||xx>4||yy<1||yy>4||s.count({xx,yy}))
 				continue;
 			if(game[xx][yy]==1||game[xx][yy]==4)
 			{
@@ -270,14 +232,14 @@ int main()
 		cout<<"当前玩家："<<player[cur].name<<endl; 
 		player[cur].Round++;
 		wait;
-		int x=rand()%16+1;
-		int y=rand()%16+1;
+		int x=rand()%4+1;
+		int y=rand()%4+1;
 		while(danger(game[x][y])&&rand()%100<player[cur].ign)
 		{
 			cout<<"随机坐标("<<x<<","<<y<<")：闪避成功！"<<endl;
 			wait; 
-			x=rand()%16+1;
-			y=rand()%16+1;
+			x=rand()%4+1;
+			y=rand()%4+1;
 		}
 		
 		
@@ -304,36 +266,28 @@ int main()
 		{
 			cout<<"你挖掉了木头！"<<endl;
 			player[cur].score+=player[cur].mul/10;
-			game[x][y]=1;
 		}
 		else if(game[x][y]==5)
-		{
 			cout<<"你挖掉了石头！"<<endl;
-			game[x][y]=1;
-		}
 		else if(game[x][y]==6)
 		{
 			cout<<"你挖掉了煤矿！"<<endl;
 			player[cur].score+=3*player[cur].mul/10;
-			game[x][y]=1;
 		}
 		else if(game[x][y]==7)
 		{
 			cout<<"你挖掉了铁矿！"<<endl;
 			player[cur].score+=8*player[cur].mul/10;
-			game[x][y]=1;
 		}
 		else if(game[x][y]==8)
 		{
 			cout<<"你挖掉了金矿！"<<endl;
 			player[cur].score+=24*player[cur].mul/10;
-			game[x][y]=1;
 		}
 		else if(game[x][y]==9)
 		{
 			cout<<"你挖掉了钻石！"<<endl;
 			player[cur].score+=64*player[cur].mul/10;
-			game[x][y]=1;
 		}
 		else if(game[x][y]==10)
 		{
@@ -342,7 +296,6 @@ int main()
 			int tmp=rand()%3+1;
 			player[cur].health+=tmp;
 			cout<<"恭喜你，获得了 "<<tmp<<" 点生命值！"<<endl;
-			game[x][y]=1;
 		}
 		else if(game[x][y]==11)
 		{
@@ -351,25 +304,25 @@ int main()
 			int tmp=rand()%10+1;
 			player[cur].mul+=tmp;
 			cout<<"恭喜你，获得了 "<<tmp/10<<"."<<tmp%10<<" 点倍率提升！"<<endl;
-			game[x][y]=1;
 		}
 		else
 		{
 			cout<<"你挖掉了蓝宝石！"<<endl;
 			wait;
-			int tmp=rand()%16+1;
+			int tmp=rand()%6+1;
 			player[cur].ign+=tmp;
 			cout<<"恭喜你，获得了 "<<tmp<<"% 点闪避率！"<<endl;
-			game[x][y]=1;
 		}
 		wait;
+		
+		game[x][y]=nex(game[x][y]);
+		
 		if(player[cur].health==0)
 		{
 			sur--;
 			cout<<"你已阵亡！"<<endl;
 			wait; 
 		}
-		while(checklava());
 
 		if(sur==0)
 			break;
