@@ -98,7 +98,7 @@ void get_player_info()
 void initial()
 {
 	int tmp=0;
-	while(tmp<16)
+	while(tmp<8)
 	{
 		int x=rand()%16+1;
 		int y=rand()%16+1;
