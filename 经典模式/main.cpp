@@ -190,7 +190,8 @@ void initial()
 			game[x][y]=11;//放置绿宝石 
 			tmp++;
 		}
-	}tmp=0;
+	}
+	tmp=0;
 	while(tmp<5)
 	{
 		int x=rand()%16+1;
@@ -411,7 +412,7 @@ int main()
 		{
 			cout<<"你挖掉了蓝宝石！"<<endl;
 			wait;
-			int tmp=rand()%20+1;
+			int tmp=rand()%30+1;
 			player[cur].ign=min(90,player[cur].ign+tmp);
 			cout<<"恭喜你，获得了 "<<tmp<<"% 点闪避率！"<<endl;
 			game[x][y]=1;
