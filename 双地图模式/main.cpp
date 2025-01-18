@@ -481,13 +481,6 @@ int main()
 		int x=rand()%12+1;
 		int y=rand()%12+1;
 		int loc=player[cur].locate;
-		while(danger(game[loc][x][y])&&rand()%100<player[cur].ign)
-		{
-			cout<<"Ëæ»ú×ø±ê("<<x<<","<<y<<")£ºÉÁ±Ü³É¹¦£¡"<<endl;
-			wait; 
-			x=rand()%12+1;
-			y=rand()%12+1;
-		}
 		
 		
 		
@@ -499,15 +492,24 @@ int main()
 			cout<<"Ê²Ã´¶¼Ã»ÓĞ·¢Éú......"<<endl;
 		else if(game[loc][x][y]==2)
 		{
-			cout<<"Ôã¸â£¬ÄãÒı±¬ÁËÕ¨µ¯£¡"<<endl;
-			player[cur].health=max(0,player[cur].health-2);
-			TNT_act(x,y,loc);
-			
+			if(rand()%100<player[cur].ign)
+				cout<<"¹§Ï²Äã£¬ÉÁ±Ü³É¹¦£¡"<<endl;
+			else
+			{
+				cout<<"Ôã¸â£¬ÄãÒı±¬ÁËÕ¨µ¯£¡"<<endl;
+				player[cur].health=max(0,player[cur].health-2);
+				TNT_act(x,y,loc);
+			}			
 		}
 		else if(game[loc][x][y]==3)
 		{
-			cout<<"Ôã¸â£¬Äãµô½øÁËÑÒ½¬£¡"<<endl;
-			player[cur].health=max(0,player[cur].health-1);
+			if(rand()%100<player[cur].ign)
+				cout<<"¹§Ï²Äã£¬ÉÁ±Ü³É¹¦£¡"<<endl;
+			else
+			{
+				cout<<"Ôã¸â£¬Äãµô½øÁËÑÒ½¬"<<endl;
+				player[cur].health=max(0,player[cur].health-1);
+			}
 		}
 		else if(game[loc][x][y]==4)
 		{
