@@ -113,7 +113,7 @@ void get_player_info()
 void initial()
 {
 	int tmp=0;
-	while(tmp<2)
+	while(tmp<3)
 	{
 		int x=rand()%16+1;
 		int y=rand()%16+1;
