@@ -95,6 +95,7 @@ void get_player_info()
 		player[i].ign=0; 
 		player[i].locate=0;//初始位置为主世界
 	}
+	random_shuffle(player+1,player+n+1);
 	clear;
 }
 

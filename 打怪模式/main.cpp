@@ -107,6 +107,7 @@ void get_player_info()
 		player[i].mul=10;
 		player[i].ign=0; 
 	}
+	random_shuffle(player+1,player+n+1);
 	clear;
 }
 
