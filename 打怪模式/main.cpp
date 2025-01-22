@@ -229,7 +229,7 @@ void initial()
 		game[i][j]=5;//∑≈÷√ ØÕ∑
 	
 	tmp=0;
-	while(tmp<16)
+	while(tmp<24)
 	{
 		int x=rand()%16+1;
 		int y=rand()%16+1;
@@ -240,7 +240,7 @@ void initial()
 		}
 	}
 	tmp=0;
-	while(tmp<3)
+	while(tmp<6)
 	{
 		int x=rand()%16+1;
 		int y=rand()%16+1;
@@ -251,7 +251,7 @@ void initial()
 		}
 	}
 	tmp=0;
-	while(tmp<1)
+	while(tmp<2)
 	{
 		int x=rand()%16+1;
 		int y=rand()%16+1;
