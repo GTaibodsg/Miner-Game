@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 #include<unistd.h>
 #include "windows.h"
-#define int long long
 #define clear system("cls")
 #define wait sleep(3)
 #define PA pair<int,int>
@@ -230,7 +229,7 @@ void print_grid()
 
 void print_player_info(bool show_Round)
 {
-	int Max=0,Max_cnt=0,Min=1e18,Min_cnt=0;
+	int Max=0,Max_cnt=0,Min=1e9,Min_cnt=0;
 	for(int i=1;i<=n;i++)
 	{
 		player[i].flag_max=false;
