@@ -31,3 +31,9 @@
 ~~如果想到比较有趣的模式也可以提 issue，会根据实际情况做的。~~
 
 **Tips:若感觉程序的运行速度较慢，可以修改宏定义里的sleep参数大小。**
+
+### 网页小游戏版本
+
+项目地址：<a href="https://github.com/GTaibodsg/Miner_Game_Website">https://github.com/GTaibodsg/Miner_Game_Website</a>。
+
+这是本游戏的网页实现版本，目前还在开发阶段。
